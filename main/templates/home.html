@@ -1,0 +1,40 @@
+{% extends 'main.html' %} {% block content %}
+<h1>User Management</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in values %} 
+    <tr>
+        <td>{{user.id}}</td>
+     <td>{{user.first_name}}</td>
+     <td>{{user.last_name}}</td>
+     <td>{{user.user_name}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.password}}</td>
+    <td>
+      <a class="btn btn-info" href={% url 'edit' user.id %}>Edit</a>
+      <a class="btn btn-danger" href={% url 'delete' user.id %}>Delete</a>
+    </td>
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+<div class="d-flex justify-content-between">
+<a class="btn btn-primary" href={% url 'register' %}>Register</a>
+
+<a href= {% url 'logout' %} class="btn btn-danger">Logout</a>
+
+</div>
+
+{% endblock content %}
